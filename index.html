@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'unsafe-inline'"
+    />
 
-<head>
-  <meta charset="UTF-8">
-  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'unsafe-inline'">
+    <title>Countdown</title>
 
-  <title>Countdown</title>
+    <script>
+      function loaded() {
+        let daysLeft = -2; // -2 means the script has loaded
+        let today = new Date();
+        let futureDate = new Date("July 14, 2020 09:00:00"); // example date, change this
 
-  <script>
-    function loaded() {
-      let daysLeft = -2; // -2 means the script has loaded
-      let today = new Date();
-      let futureDate = new Date("July 14, 2020 00:00:00") // example date, change this
+        let timeDelta = futureDate - today; // find time delta
+        timeDelta = Math.ceil(timeDelta / 3600000); // round up and convert ms to hours
+        // timeDelta = Math.ceil(timeDelta / 86400000); // round up and convert ms to days
 
-      let timeDelta = futureDate - today; // find time delta
-      timeDelta = Math.ceil(timeDelta / 86400000); // round up and convert seconds to days
+        document.getElementById("clockTitle").innerHTML = timeDelta.toString();
+        setTimeout(arguments.callee, 10000);
+      }
+    </script>
+    <link rel="stylesheet" type="text/css" href="common.css" />
+  </head>
 
-      document.getElementById("clockTitle").innerHTML = timeDelta.toString();
-      setTimeout(arguments.callee, 1000000);
-    }
-  </script>
-  <link rel="stylesheet" type="text/css" href="common.css" />
-</head>
-
-<body onload="loaded()">
-  <div id="clockTitle">-1</div> <!-- -1 means the script hasn't loaded -->
-  <div id="clockSubTitle">days left</div>
-</body>
-
+  <body onload="loaded()">
+    <div id="clockTitle">-1</div>
+    <!-- -1 means the script hasn't loaded -->
+    <div id="clockSubTitle">hours left</div>
+    <!--<div id="clockSubTitle">days left</div>-->
+  </body>
 </html>
