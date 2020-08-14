@@ -11,26 +11,45 @@
 
   <script>
     function loaded() {
-      let daysLeft = -2; // -2 means the script has loaded
+      let daysLeft = NaN;
       let today = new Date();
-      let futureDate = new Date("July 14, 2020 09:00:00"); // example date, change this
+      let futureDate = new Date("July 14, 2020 16:00:00"); // example date, change this
 
       let timeDelta = futureDate - today; // find time delta
       timeDelta = Math.ceil(timeDelta / 86400000); // round up and convert ms to hours
-      // timeDelta = Math.ceil(timeDelta / 86400000); // round up and convert ms to days
 
       document.getElementById("clockTitle").innerHTML = timeDelta.toString();
       setTimeout(arguments.callee, 10000);
     }
   </script>
-  <link rel="stylesheet" type="text/css" href="common.css" />
+  <style>
+    body {
+      margin: 0px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background-size: cover;
+      background-image: url("./bg.jpg");
+    }
+
+    #clockTitle {
+      color: #fff; /* change this depending on bg brightness */
+      text-align: center;
+      font-size: 80px;
+      width: 100%;
+    }
+
+    #clockSubTitle {
+      color: #fff; /* change this depending on bg brightness */
+      font-style: italic;
+      text-align: center;
+      font-size: 30px;
+      width: 100%;
+    }
+  </style>
 </head>
 
 <body onload="loaded()">
-  <div id="clockTitle">-1</div>
-  <!-- -1 means the script hasn't loaded -->
+  <div id="clockTitle">?</div>
   <div id="clockSubTitle">days left</div>
-  <!--<div id="clockSubTitle">days left</div>-->
 </body>
 
 </html>

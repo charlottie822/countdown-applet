@@ -12,9 +12,6 @@ function createWindow() {
     height: 160,
     resizable: false,
     icon: path.join(__dirname, 'electron.svg'), // this doesn't work on ubuntu for me...
-    webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
-    }
   });
 
   // Remove Menubar
