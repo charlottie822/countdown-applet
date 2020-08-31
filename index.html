@@ -10,10 +10,11 @@
   <title>Countdown</title>
 
   <script>
-    function loaded() {
-      let daysLeft = NaN;
+    const futureDate = new Date("July 14, 2020 16:00:00"); // example date
+    const daysLeft = NaN;
+
+    function update() {
       let today = new Date();
-      let futureDate = new Date("July 14, 2020 16:00:00"); // example date, change this
 
       let timeDelta = futureDate - today; // find time delta
       timeDelta = Math.ceil(timeDelta / 86400000); // round up and convert ms to hours
@@ -31,14 +32,16 @@
     }
 
     #clockTitle {
-      color: #fff; /* change this depending on bg brightness */
+      color: #fff;
+      /* change this depending on bg brightness */
       text-align: center;
       font-size: 80px;
       width: 100%;
     }
 
     #clockSubTitle {
-      color: #fff; /* change this depending on bg brightness */
+      color: #fff;
+      /* change this depending on bg brightness */
       font-style: italic;
       text-align: center;
       font-size: 30px;
@@ -47,7 +50,7 @@
   </style>
 </head>
 
-<body onload="loaded()">
+<body onload="update()">
   <div id="clockTitle">?</div>
   <div id="clockSubTitle">days left</div>
 </body>
